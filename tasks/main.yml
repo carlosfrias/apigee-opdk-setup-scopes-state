@@ -13,7 +13,7 @@
   uri:
     user: '{{ opdk_user_email }}'
     password: '{{ opdk_user_pass }}'
-    method: DELETE
+    method: GET
     body_format: json
     url: http://{{ local_mgmt_ip }}:8080/v1/analytics/groups/ax/{{ ax_group }}
   register: axgroup_results
