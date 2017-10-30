@@ -16,23 +16,23 @@
     method: GET
     body_format: json
     url: http://{{ local_mgmt_ip }}:8080/v1/analytics/groups/ax/{{ ax_group }}
-  register: axgroup_results
+  register: ax_state
 
 - name: Debug axgroup_results
   debug:
-    var: axgroup_results
+    var: ax_state
 
 - pause:
 
-- name: Format results to json
-  set_fact:
-    ax_state: "{{ axgroup_results.stdout | from_json }}"
+#- name: Format results to json
+#  set_fact:
+#    ax_state: "{{ axgroup_results.json | from_json }}"
 
 - name: Assert that scopes is not empty
   assert:
     that:
-      - "ax_state['scopes'] | length > 0"
-  msg: "analytics group has no scopes defined"
+      - "ax_state.json['scopes'] | length > 0"
+  msg: "analytics group has no scopes defined, please define scopes for analytics group"
 
 
 
