@@ -32,7 +32,7 @@
   assert:
     that:
       - "ax_state.json['scopes'] | length > 0"
-  msg: "analytics group has no scopes defined, please define scopes for analytics group"
+    msg: "analytics group has no scopes defined, please define scopes for analytics group"
 
 
 
