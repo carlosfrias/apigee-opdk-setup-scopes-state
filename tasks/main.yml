@@ -16,7 +16,7 @@
     method: DELETE
     body_format: json
     url: http://{{ local_mgmt_ip }}:8080/v1/analytics/groups/ax/{{ ax_group }}
-  register: ax_state | from_json
+  register: ax_state
 
 - name: Assert that scopes is not empty
   assert:
