@@ -18,6 +18,12 @@
     url: http://{{ local_mgmt_ip }}:8080/v1/analytics/groups/ax/{{ ax_group }}
   register: axgroup_results
 
+- name: Debug axgroup_results
+  debug:
+    var: axgroup_results
+
+- pause:
+
 - name: Format results to json
   set_fact:
     ax_state: "{{ axgroup_results.stdout | from_json }}"
