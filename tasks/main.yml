@@ -17,6 +17,7 @@
     body_format: json
     url: http://{{ local_mgmt_ip }}:8080/v1/analytics/groups/ax/{{ ax_group }}
   register: ax_state
+  delegate_to: "{{ local_mgmt_ip | default(ansible_default_ipv4.address) }}"
 
 - name: Assert that scopes is not empty
   assert:
